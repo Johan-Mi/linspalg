@@ -1,0 +1,54 @@
+; Stores the x and y components of a 2D vector in x-var and y-var respectively.
+(macro (v2-store x-var y-var (Vec2 x y))
+       (do
+         (:= ,x-var ,x)
+         (:= ,y-var ,y)))
+
+; Adds the x and y components of a 2D vector to x-var and y-var respectively.
+(macro (v2-store+ x-var y-var (Vec2 x y))
+       (do
+         (+= ,x-var ,x)
+         (+= ,y-var ,y)))
+
+; Adds two 2D vectors.
+(macro (v2+ (Vec2 x1 y1) (Vec2 x2 y2))
+       (Vec2 (+ ,x1 ,x2) (+ ,y1 ,y2)))
+
+; Subtracts two 2D vectors.
+(macro (v2- (Vec2 x1 y1) (Vec2 x2 y2))
+       (Vec2 (- ,x1 ,x2) (- ,y1 ,y2)))
+
+; Multiplies each component of a 2D vector by a scalar.
+(macro (v2-scale scalar (Vec2 x y))
+       (Vec2 (* ,x ,scalar) (* ,y ,scalar)))
+
+; Applies the x and y components of a 2D vector as arguments to the provided
+; function.
+(macro (v2-use fun (Vec2 x y))
+       (,fun ,x ,y))
+
+; Gets the z component of a 3D vector.
+(macro (v3.z (Vec3 x y z))
+       ,z)
+
+; Stores the x, y and z components of a 3D vector in x-var, y-var and z-var
+; respectively.
+(macro (v3-store x-var y-var z-var (Vec3 x y z))
+       (do
+         (:= ,x-var ,x)
+         (:= ,y-var ,y)
+         (:= ,z-var ,z)))
+
+; Adds two 3D vectors.
+(macro (v3+ (Vec3 x1 y1 z1)
+            (Vec3 x2 y2 z2))
+       (Vec3 (+ ,x1 ,x2) (+ ,y1 ,y2) (+ ,z1 ,z2)))
+
+; Subtracts two 3D vectors.
+(macro (v3- (Vec3 x1 y1 z1)
+            (Vec3 x2 y2 z2))
+       (Vec3 (- ,x1 ,x2) (- ,y1 ,y2) (- ,z1 ,z2)))
+
+; Multiplies each component of a 3D vector by a scalar.
+(macro (v3-scale scalar (Vec3 x y z))
+       (Vec3 (* ,x ,scalar) (* ,y ,scalar) (* ,z ,scalar)))

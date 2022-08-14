@@ -1,0 +1,20 @@
+; Determines the x and y coordinates where a 3D line crosses the specified
+; z value.
+(macro (v3-zclip (Vec3 x1 y1 z1) (Vec3 x2 y2 z2) clip-depth)
+       (v2+ (Vec2 ,x1 ,y1)
+            (v2-scale
+              (/ (- ,clip-depth ,z1)
+                 (- ,z2 ,z1))
+              (v2- (Vec2 ,x2 ,y2) (Vec2 ,x1 ,y1)))))
+
+; Determines the y coordinate where a 2D line crosses the specified x value.
+(macro (v2-xclip (Vec2 x1 y1) (Vec2 x2 y2) clip-depth)
+       (+ ,y1 (* (- ,y2 ,y1)
+                 (/ (- ,clip-depth ,x1)
+                    (- ,x2 ,x1)))))
+
+; Determines the x coordinate where a 2D line crosses the specified y value.
+(macro (v2-yclip (Vec2 x1 y1) (Vec2 x2 y2) clip-depth)
+       (+ ,x1 (* (- ,x2 ,x1)
+                 (/ (- ,clip-depth ,y1)
+                    (- ,y2 ,y1)))))

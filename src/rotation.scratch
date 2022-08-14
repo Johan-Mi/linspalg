@@ -1,0 +1,23 @@
+; Computes the 2D rotation matrix for a given angle.
+(macro (rotation-matrix-2d angle)
+       (Mat2x2 (cos ,angle) (- (sin ,angle))
+               (sin ,angle)    (cos ,angle)))
+
+; Rotates a 2D vector by a given angle.
+(macro (v2-rotate angle vec)
+       (m2x2*v2 (rotation-matrix-2d ,angle) ,vec))
+
+; Computes the 3D rotation matrix for a specified pitch.
+(macro (rotation-matrix-3d-pitch pitch)
+       (m2x2-to-m3x3-ixy (rotation-matrix-2d ,pitch)))
+
+; Computes the 3D rotation matrix for a specified yaw.
+(macro (rotation-matrix-3d-yaw yaw)
+       (m2x2-to-m3x3-xiy (rotation-matrix-2d ,yaw)))
+
+; Rotates a 3D vector by a given yaw and pitch. This order makes the operation
+; suitable for rotating the world, not the camera.
+(macro (v3-rotate-yaw-pitch yaw pitch vec)
+       (m3x3*v3 (rotation-matrix-3d-pitch ,pitch)
+                (m3x3*v3 (rotation-matrix-3d-yaw ,yaw)
+                         ,vec)))
