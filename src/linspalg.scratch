@@ -52,3 +52,8 @@
 ; Multiplies each component of a 3D vector by a scalar.
 (macro (v3-scale scalar (Vec3 x y z))
        (Vec3 (* ,x ,scalar) (* ,y ,scalar) (* ,z ,scalar)))
+
+; Applies the x, y and z components of a 3D vector as arguments to the
+; provided function.
+(macro (v3-use fun (Vec3 x y z))
+       (,fun ,x ,y ,z))
