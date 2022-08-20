@@ -22,6 +22,10 @@
 (macro (v2-scale scalar (Vec2 x y))
        (Vec2 (* ,x ,scalar) (* ,y ,scalar)))
 
+; Computes the dot product of two 2D vectors.
+(macro (v2-dot (Vec2 x1 y1) (Vec2 x2 y2))
+       (+ (* ,x1 ,x2) (* ,y1 ,y2)))
+
 ; Applies the x and y components of a 2D vector as arguments to the provided
 ; function.
 (macro (v2-use fun (Vec2 x y))
@@ -52,6 +56,10 @@
 ; Multiplies each component of a 3D vector by a scalar.
 (macro (v3-scale scalar (Vec3 x y z))
        (Vec3 (* ,x ,scalar) (* ,y ,scalar) (* ,z ,scalar)))
+
+; Computes the dot product of two 3D vectors.
+(macro (v3-dot (Vec3 x1 y1 z1) (Vec3 x2 y2 z2))
+       (+ (* ,x1 ,x2) (* ,y1 ,y2) (* ,z1 ,z2)))
 
 ; Applies the x, y and z components of a 3D vector as arguments to the
 ; provided function.
