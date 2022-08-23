@@ -59,6 +59,27 @@
          (:= ,y-var (* ,y-var ,y))
          (:= ,z-var (* ,z-var ,z))))
 
+; `:=` lifted to 3D vectors.
+(macro (v3:= (Vec3 x-var y-var z-var) (Vec3 x y z))
+       (do
+         (:= ,x-var ,x)
+         (:= ,y-var ,y)
+         (:= ,z-var ,z)))
+
+; `+=` lifted to 3D vectors.
+(macro (v3+= (Vec3 x-var y-var z-var) (Vec3 x y z))
+       (do
+         (+= ,x-var ,x)
+         (+= ,y-var ,y)
+         (+= ,z-var ,z)))
+
+; `*=` lifted to 3D vectors.
+(macro (v3*= (Vec3 x-var y-var z-var) (Vec3 x y z))
+       (do
+         (:= ,x-var (* ,x-var ,x))
+         (:= ,y-var (* ,y-var ,y))
+         (:= ,z-var (* ,z-var ,z))))
+
 ; Adds two 3D vectors.
 (macro (v3+ (Vec3 x1 y1 z1)
             (Vec3 x2 y2 z2))
