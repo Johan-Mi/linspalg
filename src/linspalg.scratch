@@ -45,7 +45,7 @@
 
 ; Maps each component of a 2D vector by interpolating it into the given body.
 (macro (v2-map vec param body)
-       (v2-map-simple vec (anon-macro (_ ,param) ,body)))
+       (v2-map-simple ,vec (anon-macro (_ ,param) ,body)))
 
 ; Gets the z component of a 3D vector.
 (macro (v3.z (Vec3 x y z))
@@ -125,4 +125,4 @@
 
 ; Maps each component of a 3D vector by interpolating it into the given body.
 (macro (v3-map vec param body)
-       (v3-map-simple vec (anon-macro (_ ,param) ,body)))
+       (v3-map-simple ,vec (anon-macro (_ ,param) ,body)))
