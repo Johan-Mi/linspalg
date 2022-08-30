@@ -39,6 +39,14 @@
 (macro (v2-use fun (Vec2 x y))
        (,fun ,x ,y))
 
+; Maps f over each component of a 2D vector.
+(macro (v2-map-simple (Vec2 x y) f)
+       (Vec2 (,f ,x) (,f ,y)))
+
+; Maps each component of a 2D vector by interpolating it into the given body.
+(macro (v2-map vec param body)
+       (v2-map-simple vec (anon-macro (_ ,param) ,body))
+
 ; Gets the z component of a 3D vector.
 (macro (v3.z (Vec3 x y z))
        ,z)
@@ -110,3 +118,11 @@
 ; provided function.
 (macro (v3-use fun (Vec3 x y z))
        (,fun ,x ,y ,z))
+
+; Maps f over each component of a 3D vector.
+(macro (v3-map-simple (Vec3 x y z) f)
+       (Vec3 (,f ,x) (,f ,y) (,f ,z)))
+
+; Maps each component of a 3D vector by interpolating it into the given body.
+(macro (v3-map vec param body)
+       (v3-map-simple vec (anon-macro (_ ,param) ,body))
