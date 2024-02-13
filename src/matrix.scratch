@@ -2,30 +2,30 @@
 (macro (m2x2*v2 (Mat2x2 a b
                         c d)
                 (Vec2 x y))
-       (Vec2 (+ (* ,a ,x) (* ,b ,y))
-             (+ (* ,c ,x) (* ,d ,y))))
+  (Vec2 (+ (* ,a ,x) (* ,b ,y))
+        (+ (* ,c ,x) (* ,d ,y))))
 
 ; Turns a 2x2 matrix into a 3x3 matrix by taking the second row/column from the
 ; identity matrix.
 (macro (m2x2-to-m3x3-xiy (Mat2x2 a b
                                  c d))
-       (Mat3x3 ,a 0 ,b
-                0 1  0
-               ,c 0 ,d))
+  (Mat3x3 ,a 0 ,b
+          0 1 0
+          ,c 0 ,d))
 
 ; Turns a 2x2 matrix into a 3x3 matrix by taking the first row/column from the
 ; identity matrix.
 (macro (m2x2-to-m3x3-ixy (Mat2x2 a b
                                  c d))
-       (Mat3x3 1  0  0
-               0 ,a ,b
-               0 ,c ,d))
+  (Mat3x3 1 0 0
+          0 ,a ,b
+          0 ,c ,d))
 
 ; Multiplies a 3x3 matrix with a 3D vector.
 (macro (m3x3*v3 (Mat3x3 a b c
                         d e f
                         g h i)
                 (Vec3 x y z))
-       (Vec3 (+ (* ,a ,x) (* ,b ,y) (* ,c ,z))
-             (+ (* ,d ,x) (* ,e ,y) (* ,f ,z))
-             (+ (* ,g ,x) (* ,h ,y) (* ,i ,z))))
+  (Vec3 (+ (* ,a ,x) (* ,b ,y) (* ,c ,z))
+        (+ (* ,d ,x) (* ,e ,y) (* ,f ,z))
+        (+ (* ,g ,x) (* ,h ,y) (* ,i ,z))))

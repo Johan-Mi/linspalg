@@ -1,128 +1,128 @@
 ; Stores the x and y components of a 2D vector in x-var and y-var respectively.
 (macro (v2-store x-var y-var (Vec2 x y))
-       (do
-         (:= ,x-var ,x)
-         (:= ,y-var ,y)))
+  (do
+    (:= ,x-var ,x)
+    (:= ,y-var ,y)))
 
 ; Adds the x and y components of a 2D vector to x-var and y-var respectively.
 (macro (v2-store+ x-var y-var (Vec2 x y))
-       (do
-         (+= ,x-var ,x)
-         (+= ,y-var ,y)))
+  (do
+    (+= ,x-var ,x)
+    (+= ,y-var ,y)))
 
 ; Adds two 2D vectors.
 (macro (v2+ (Vec2 x1 y1) (Vec2 x2 y2))
-       (Vec2 (+ ,x1 ,x2) (+ ,y1 ,y2)))
+  (Vec2 (+ ,x1 ,x2) (+ ,y1 ,y2)))
 
 ; Subtracts two 2D vectors.
 (macro (v2- (Vec2 x1 y1) (Vec2 x2 y2))
-       (Vec2 (- ,x1 ,x2) (- ,y1 ,y2)))
+  (Vec2 (- ,x1 ,x2) (- ,y1 ,y2)))
 
 ; Multiplies each component of a 2D vector by a scalar.
 (macro (v2-scale scalar (Vec2 x y))
-       (Vec2 (* ,x ,scalar) (* ,y ,scalar)))
+  (Vec2 (* ,x ,scalar) (* ,y ,scalar)))
 
 ; Computes the dot product of two 2D vectors.
 (macro (v2-dot (Vec2 x1 y1) (Vec2 x2 y2))
-       (+ (* ,x1 ,x2) (* ,y1 ,y2)))
+  (+ (* ,x1 ,x2) (* ,y1 ,y2)))
 
 ; Determines the length of a 2D vector squared.
 (macro (v2-len^2 (Vec2 x y))
-       (+ (* ,x ,x) (* ,y ,y)))
+  (+ (* ,x ,x) (* ,y ,y)))
 
 ; Determines the length of a 2D vector.
 (macro (v2-len vec)
-       (sqrt (v2-len^2 ,vec)))
+  (sqrt (v2-len^2 ,vec)))
 
 ; Applies the x and y components of a 2D vector as arguments to the provided
 ; function.
 (macro (v2-use fun (Vec2 x y))
-       (,fun ,x ,y))
+  (,fun ,x ,y))
 
 ; Maps f over each component of a 2D vector.
 (macro (v2-map-simple (Vec2 x y) f)
-       (Vec2 (,f ,x) (,f ,y)))
+  (Vec2 (,f ,x) (,f ,y)))
 
 ; Maps each component of a 2D vector by interpolating it into the given body.
 (macro (v2-map vec param body)
-       (v2-map-simple ,vec (macro (_ ,param) ,body)))
+  (v2-map-simple ,vec (macro (_ ,param) ,body)))
 
 ; Gets the z component of a 3D vector.
 (macro (v3.z (Vec3 x y z))
-       ,z)
+  ,z)
 
 ; Stores the x, y and z components of a 3D vector in x-var, y-var and z-var
 ; respectively.
 (macro (v3-store x-var y-var z-var (Vec3 x y z))
-       (do
-         (:= ,x-var ,x)
-         (:= ,y-var ,y)
-         (:= ,z-var ,z)))
+  (do
+    (:= ,x-var ,x)
+    (:= ,y-var ,y)
+    (:= ,z-var ,z)))
 
 ; Multiplies the x, y and z components of a 3D vector into x-var, y-var and
 ; z-var respectively.
 (macro (v3-store* x-var y-var z-var (Vec3 x y z))
-       (do
-         (:= ,x-var (* ,x-var ,x))
-         (:= ,y-var (* ,y-var ,y))
-         (:= ,z-var (* ,z-var ,z))))
+  (do
+    (:= ,x-var (* ,x-var ,x))
+    (:= ,y-var (* ,y-var ,y))
+    (:= ,z-var (* ,z-var ,z))))
 
 ; `:=` lifted to 3D vectors.
 (macro (v3:= (Vec3 x-var y-var z-var) (Vec3 x y z))
-       (do
-         (:= ,x-var ,x)
-         (:= ,y-var ,y)
-         (:= ,z-var ,z)))
+  (do
+    (:= ,x-var ,x)
+    (:= ,y-var ,y)
+    (:= ,z-var ,z)))
 
 ; `+=` lifted to 3D vectors.
 (macro (v3+= (Vec3 x-var y-var z-var) (Vec3 x y z))
-       (do
-         (+= ,x-var ,x)
-         (+= ,y-var ,y)
-         (+= ,z-var ,z)))
+  (do
+    (+= ,x-var ,x)
+    (+= ,y-var ,y)
+    (+= ,z-var ,z)))
 
 ; `*=` lifted to 3D vectors.
 (macro (v3*= (Vec3 x-var y-var z-var) (Vec3 x y z))
-       (do
-         (:= ,x-var (* ,x-var ,x))
-         (:= ,y-var (* ,y-var ,y))
-         (:= ,z-var (* ,z-var ,z))))
+  (do
+    (:= ,x-var (* ,x-var ,x))
+    (:= ,y-var (* ,y-var ,y))
+    (:= ,z-var (* ,z-var ,z))))
 
 ; Adds two 3D vectors.
 (macro (v3+ (Vec3 x1 y1 z1)
             (Vec3 x2 y2 z2))
-       (Vec3 (+ ,x1 ,x2) (+ ,y1 ,y2) (+ ,z1 ,z2)))
+  (Vec3 (+ ,x1 ,x2) (+ ,y1 ,y2) (+ ,z1 ,z2)))
 
 ; Subtracts two 3D vectors.
 (macro (v3- (Vec3 x1 y1 z1)
             (Vec3 x2 y2 z2))
-       (Vec3 (- ,x1 ,x2) (- ,y1 ,y2) (- ,z1 ,z2)))
+  (Vec3 (- ,x1 ,x2) (- ,y1 ,y2) (- ,z1 ,z2)))
 
 ; Multiplies each component of a 3D vector by a scalar.
 (macro (v3-scale scalar (Vec3 x y z))
-       (Vec3 (* ,x ,scalar) (* ,y ,scalar) (* ,z ,scalar)))
+  (Vec3 (* ,x ,scalar) (* ,y ,scalar) (* ,z ,scalar)))
 
 ; Computes the dot product of two 3D vectors.
 (macro (v3-dot (Vec3 x1 y1 z1) (Vec3 x2 y2 z2))
-       (+ (* ,x1 ,x2) (* ,y1 ,y2) (* ,z1 ,z2)))
+  (+ (* ,x1 ,x2) (* ,y1 ,y2) (* ,z1 ,z2)))
 
 ; Determines the length of a 3D vector squared.
 (macro (v3-len^2 (Vec3 x y z))
-       (+ (* ,x ,x) (* ,y ,y) (* ,z ,z)))
+  (+ (* ,x ,x) (* ,y ,y) (* ,z ,z)))
 
 ; Determines the length of a 3D vector.
 (macro (v3-len vec)
-       (sqrt (v3-len^2 ,vec)))
+  (sqrt (v3-len^2 ,vec)))
 
 ; Applies the x, y and z components of a 3D vector as arguments to the
 ; provided function.
 (macro (v3-use fun (Vec3 x y z))
-       (,fun ,x ,y ,z))
+  (,fun ,x ,y ,z))
 
 ; Maps f over each component of a 3D vector.
 (macro (v3-map-simple (Vec3 x y z) f)
-       (Vec3 (,f ,x) (,f ,y) (,f ,z)))
+  (Vec3 (,f ,x) (,f ,y) (,f ,z)))
 
 ; Maps each component of a 3D vector by interpolating it into the given body.
 (macro (v3-map vec param body)
-       (v3-map-simple ,vec (macro (_ ,param) ,body)))
+  (v3-map-simple ,vec (macro (_ ,param) ,body)))

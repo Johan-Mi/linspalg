@@ -1,5 +1,5 @@
 ; Computes the coordinates of a given point relative to the camera.
 (macro (view-transform point camera-position pitch yaw)
-       (v3-rotate-yaw-pitch
-         (- ,yaw) ,pitch
-         (v3- ,point ,camera-position)))
+  (v3-rotate-yaw-pitch
+    (- ,yaw) ,pitch
+    (v3- ,point ,camera-position)))
